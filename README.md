@@ -21,5 +21,5 @@ insert here
 <img width="563" alt="FairShare" src="https://github.com/user-attachments/assets/4b956111-6986-4849-b6a3-dc3e04c0a6f0" />
 
 
-###Architectures 
+### Architectures 
 We will be using a Model-View-Controller pattern since our app is very UI-heavy, a Client-Server pattern since we will need a backend server to store and process shared expenses/chores as well as a client frontend for user interactions. As well as a RESTful API because it's a scalable way to manage expense and chore data. Lastly, we will use a Publisher-Subscriber pattern for real-time notifications when tasks/expenses are logged. 
