@@ -23,3 +23,23 @@ insert here
 
 ### Architectures 
 We will be using a Model-View-Controller pattern since our app is very UI-heavy, a Client-Server pattern since we will need a backend server to store and process shared expenses/chores as well as a client frontend for user interactions. As well as a RESTful API because it's a scalable way to manage expense and chore data. Lastly, we will use a Publisher-Subscriber pattern for real-time notifications when tasks/expenses are logged. 
+
+Here are the technologies we will use:
+
+Model-View-Controller
+* Figma
+
+Front-end
+* React Native
+
+Back-end
+* Node.js
+
+Database
+* SQLite
+
+Server
+* AWS EC2
+
+Authentication
+* OAuth
