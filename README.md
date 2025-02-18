@@ -26,20 +26,18 @@ We will be using a Model-View-Controller pattern since our app is very UI-heavy,
 
 Here are the technologies we will use:
 
-Model-View-Controller
-* Figma
-
 Front-end
-* React Native
+* Flutterflow
 
 Back-end
-* Node.js
+* Firebase
+* Stripe API 
 
 Database
-* SQLite
+* Firestore
 
 Server
-* AWS EC2
+*
 
 Authentication
-* OAuth
+* Firebase
