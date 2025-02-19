@@ -48,6 +48,15 @@ class _DeleteWidgetState extends State<DeleteWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(0.0),
             ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                'https://picsum.photos/seed/739/600',
+                width: 200.0,
+                height: 200.0,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
       ),
