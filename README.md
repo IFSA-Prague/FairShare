@@ -41,3 +41,6 @@ Server
 
 Authentication
 * Firebase
+
+### Research Papers
+* Attitudes towards sharing housework in couple context: An empirical, factorial survey approach by Florian Schulz Journal of Family Research 2021 5 citations DOI: https://doi.org/10.20377/jfr-419 Journal of Family Research is a double-blind peer-reviewed quarterly serial, owned, managed, and published by Shahid Beheshti University since 2005. 
