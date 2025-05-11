@@ -1,4 +1,6 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'auth_home_widget.dart' show AuthHomeWidget;
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,8 @@ class AuthHomeModel extends FlutterFlowModel<AuthHomeWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
@@ -19,6 +23,8 @@ class AuthHomeModel extends FlutterFlowModel<AuthHomeWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  HouseholdsRecord? resetAppstateHousehold;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateTextController;

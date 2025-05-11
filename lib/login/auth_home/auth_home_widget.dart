@@ -1,18 +1,27 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/login/signup_info/signup_info_widget.dart';
+import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'auth_home_model.dart';
 export 'auth_home_model.dart';
 
 /// signin/signup
 class AuthHomeWidget extends StatefulWidget {
   const AuthHomeWidget({super.key});
+
+  static String routeName = 'AuthHome';
+  static String routePath = '/authHome';
 
   @override
   State<AuthHomeWidget> createState() => _AuthHomeWidgetState();
@@ -36,6 +45,7 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
@@ -105,6 +115,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -116,6 +128,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -177,8 +191,25 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -215,16 +246,43 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmall
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .displaySmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .displaySmall
+                                                  .fontStyle,
                                         ),
                                     unselectedLabelStyle:
                                         FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displaySmall
+                                                        .fontStyle,
+                                              ),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .displaySmall
+                                                      .fontStyle,
                                             ),
                                     indicatorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -271,8 +329,29 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ),
@@ -299,10 +378,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -363,8 +460,30 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                     keyboardType: TextInputType
                                                         .emailAddress,
@@ -402,10 +521,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -489,8 +626,30 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -529,9 +688,87 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                         return;
                                                       }
 
-                                                      context.goNamedAuth(
-                                                          'home',
-                                                          context.mounted);
+                                                      if (currentUserReference
+                                                                  ?.id !=
+                                                              null &&
+                                                          currentUserReference
+                                                                  ?.id !=
+                                                              '') {
+                                                        if (FFAppState()
+                                                                .selectedHousehold !=
+                                                            null) {
+                                                          context.pushNamedAuth(
+                                                              HomeWidget
+                                                                  .routeName,
+                                                              context.mounted);
+                                                        } else {
+                                                          if ((currentUserDocument
+                                                                      ?.households
+                                                                      .toList() ??
+                                                                  [])
+                                                              .take(1)
+                                                              .toList()
+                                                              .isNotEmpty) {
+                                                            _model.resetAppstateHousehold =
+                                                                await queryHouseholdsRecordOnce(
+                                                              queryBuilder:
+                                                                  (householdsRecord) =>
+                                                                      householdsRecord
+                                                                          .where(
+                                                                'members',
+                                                                arrayContains:
+                                                                    currentUserReference
+                                                                        ?.id,
+                                                              ),
+                                                              singleRecord:
+                                                                  true,
+                                                            ).then((s) => s
+                                                                    .firstOrNull);
+                                                            FFAppState()
+                                                                    .selectedHousehold =
+                                                                _model
+                                                                    .resetAppstateHousehold
+                                                                    ?.reference;
+                                                            safeSetState(() {});
+
+                                                            context.pushNamedAuth(
+                                                                HomeWidget
+                                                                    .routeName,
+                                                                context
+                                                                    .mounted);
+                                                          } else {
+                                                            context.pushNamedAuth(
+                                                                HomeNoHouseholdsWidget
+                                                                    .routeName,
+                                                                context
+                                                                    .mounted);
+                                                          }
+                                                        }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('Error'),
+                                                              content: Text(
+                                                                  'Email or password is incorrect'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      }
+
+                                                      safeSetState(() {});
                                                     },
                                                     text: 'Sign In',
                                                     options: FFButtonOptions(
@@ -560,12 +797,29 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .titleSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter Tight',
+                                                                font: GoogleFonts
+                                                                    .interTight(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
                                                               ),
                                                       elevation: 3.0,
                                                       borderSide: BorderSide(
@@ -588,9 +842,10 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
+                                                    onPressed: () async {
+                                                      context.pushNamed(
+                                                          ForgotpasswordWidget
+                                                              .routeName);
                                                     },
                                                     text: 'Forgot Password',
                                                     options: FFButtonOptions(
@@ -618,10 +873,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                       elevation: 0.0,
                                                       borderSide: BorderSide(
@@ -661,10 +934,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Inter',
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ),
@@ -724,7 +1015,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    'home',
+                                                                    HomeWidget
+                                                                        .routeName,
                                                                     context
                                                                         .mounted);
                                                               },
@@ -760,13 +1052,23 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Inter',
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
@@ -811,7 +1113,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          'home',
+                                                                          HomeWidget
+                                                                              .routeName,
                                                                           context
                                                                               .mounted);
                                                                     },
@@ -847,12 +1150,17 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Inter',
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                       elevation:
                                                                           0.0,
@@ -905,8 +1213,29 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ),
@@ -933,10 +1262,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -997,8 +1344,30 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                     keyboardType: TextInputType
                                                         .emailAddress,
@@ -1036,10 +1405,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -1123,8 +1510,30 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -1161,10 +1570,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -1248,8 +1675,30 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                     minLines: 1,
                                                     cursorColor:
@@ -1265,93 +1714,220 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 16.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      GoRouter.of(context)
-                                                          .prepareAuthEvent();
-                                                      if (_model
-                                                              .passwordCreateTextController
-                                                              .text !=
-                                                          _model
-                                                              .passwordConfirmTextController
-                                                              .text) {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Passwords don\'t match!',
-                                                            ),
-                                                          ),
-                                                        );
-                                                        return;
-                                                      }
-
-                                                      final user = await authManager
-                                                          .createAccountWithEmail(
-                                                        context,
-                                                        _model
-                                                            .emailAddressCreateTextController
-                                                            .text,
-                                                        _model
-                                                            .passwordCreateTextController
-                                                            .text,
-                                                      );
-                                                      if (user == null) {
-                                                        return;
-                                                      }
-
-                                                      context.goNamedAuth(
-                                                          'home',
-                                                          context.mounted);
-                                                    },
-                                                    text: 'Create Account',
-                                                    options: FFButtonOptions(
-                                                      width: 230.0,
-                                                      height: 52.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter Tight',
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                child: Builder(
+                                                  builder: (context) => Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 16.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        Function() _navigate =
+                                                            () {};
+                                                        if ((_model.emailAddressCreateTextController.text != '') &&
+                                                            (_model.passwordCreateTextController
+                                                                        .text !=
+                                                                    '') &&
+                                                            (_model.passwordConfirmTextController
+                                                                    .text ==
+                                                                _model
+                                                                    .passwordCreateTextController
+                                                                    .text)) {
+                                                          GoRouter.of(context)
+                                                              .prepareAuthEvent();
+                                                          if (_model
+                                                                  .passwordCreateTextController
+                                                                  .text !=
+                                                              _model
+                                                                  .passwordConfirmTextController
+                                                                  .text) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'Passwords don\'t match!',
+                                                                ),
                                                               ),
-                                                      elevation: 3.0,
-                                                      borderSide: BorderSide(
+                                                            );
+                                                            return;
+                                                          }
+
+                                                          final user =
+                                                              await authManager
+                                                                  .createAccountWithEmail(
+                                                            context,
+                                                            _model
+                                                                .emailAddressCreateTextController
+                                                                .text,
+                                                            _model
+                                                                .passwordCreateTextController
+                                                                .text,
+                                                          );
+                                                          if (user == null) {
+                                                            return;
+                                                          }
+
+                                                          _navigate = () =>
+                                                              context.goNamedAuth(
+                                                                  HomeWidget
+                                                                      .routeName,
+                                                                  context
+                                                                      .mounted);
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      SignupInfoWidget(
+                                                                    user:
+                                                                        currentUserReference!,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        } else {
+                                                          if (_model
+                                                                  .passwordConfirmTextController
+                                                                  .text !=
+                                                              _model
+                                                                  .passwordCreateTextController
+                                                                  .text) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Error'),
+                                                                  content: Text(
+                                                                      'Passwords do not match'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Error'),
+                                                                  content: Text(
+                                                                      'Please fill out all fields'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                          }
+                                                        }
+
+                                                        _navigate();
+                                                      },
+                                                      text: 'Create Account',
+                                                      options: FFButtonOptions(
+                                                        width: 230.0,
+                                                        height: 52.0,
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
                                                         color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .interTight(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(40.0),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              40.0),
                                                     ),
                                                   ),
                                                 ),
@@ -1380,10 +1956,28 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Inter',
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ),
@@ -1443,7 +2037,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    'home',
+                                                                    HomeWidget
+                                                                        .routeName,
                                                                     context
                                                                         .mounted);
                                                               },
@@ -1479,13 +2074,23 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Inter',
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
@@ -1530,7 +2135,8 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          'home',
+                                                                          HomeWidget
+                                                                              .routeName,
                                                                           context
                                                                               .mounted);
                                                                     },
@@ -1566,12 +2172,17 @@ class _AuthHomeWidgetState extends State<AuthHomeWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Inter',
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                       elevation:
                                                                           0.0,

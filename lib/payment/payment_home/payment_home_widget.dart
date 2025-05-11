@@ -3,13 +3,21 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/profile/profile_comp/profile_comp_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'payment_home_model.dart';
 export 'payment_home_model.dart';
 
 /// Initial payment page
 class PaymentHomeWidget extends StatefulWidget {
   const PaymentHomeWidget({super.key});
+
+  static String routeName = 'PaymentHome';
+  static String routePath = '/paymentHome';
 
   @override
   State<PaymentHomeWidget> createState() => _PaymentHomeWidgetState();
@@ -24,6 +32,15 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentHomeModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (!(FFAppState().selectedHousehold != null)) {
+        context.pushNamed(HomeNoHouseholdsWidget.routeName);
+      }
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -35,6 +52,8 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -58,8 +77,21 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                   Text(
                     'My Households',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Inter Tight',
+                          font: GoogleFonts.interTight(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .fontStyle,
                         ),
                   ),
                   StreamBuilder<List<HouseholdsRecord>>(
@@ -152,8 +184,29 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
@@ -162,12 +215,33 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ],
@@ -210,10 +284,23 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
                                     ),
                               ),
                             ].divide(SizedBox(width: 12.0)),
@@ -238,10 +325,23 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
                                     ),
                               ),
                             ].divide(SizedBox(width: 12.0)),
@@ -275,20 +375,10 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
             ),
           ),
           actions: [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                width: 60.0,
-                height: 60.0,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-                  fit: BoxFit.cover,
-                ),
-              ),
+            wrapWithModel(
+              model: _model.profileCompModel,
+              updateCallback: () => safeSetState(() {}),
+              child: ProfileCompWidget(),
             ),
           ],
           flexibleSpace: FlexibleSpaceBar(
@@ -296,9 +386,19 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
               'Sokolska Apt',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Inter Tight',
+                    font: GoogleFonts.interTight(
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     fontSize: 22.0,
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
             centerTitle: true,
@@ -339,8 +439,21 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontStyle,
                                   ),
                             ),
                             ListView(
@@ -384,8 +497,29 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
@@ -394,12 +528,33 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ],
@@ -411,10 +566,27 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ],
@@ -454,8 +626,29 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
@@ -464,12 +657,33 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ],
@@ -481,10 +695,27 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .success,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ],
@@ -519,44 +750,90 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontStyle,
                                   ),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 60.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                      child: Icon(
-                                        Icons.send,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 30.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Send',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Inter',
-                                            letterSpacing: 0.0,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context
+                                        .pushNamed(SendMoneyWidget.routeName);
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 60.0,
+                                          height: 60.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
                                           ),
+                                          child: Icon(
+                                            Icons.send,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 30.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Send',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(height: 8.0)),
                                     ),
-                                  ].divide(SizedBox(height: 8.0)),
+                                  ),
                                 ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -583,8 +860,25 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ].divide(SizedBox(height: 8.0)),
@@ -614,66 +908,30 @@ class _PaymentHomeWidgetState extends State<PaymentHomeWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ].divide(SizedBox(height: 8.0)),
                                 ),
                               ],
-                            ),
-                          ].divide(SizedBox(height: 16.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Material(
-                    color: Colors.transparent,
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 20.0, 20.0, 20.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              'Your Balance',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: 'Inter Tight',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            Text(
-                              '\$1,234.56',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Inter Tight',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            Text(
-                              'Available Balance',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
-                                  ),
                             ),
                           ].divide(SizedBox(height: 16.0)),
                         ),

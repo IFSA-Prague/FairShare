@@ -5,10 +5,11 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -85,42 +86,73 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : AuthHomeWidget(),
         ),
         FFRoute(
-          name: 'delete',
-          path: '/delete',
-          builder: (context, params) => DeleteWidget(),
+          name: SendMoneyWidget.routeName,
+          path: SendMoneyWidget.routePath,
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: SendMoneyWidget(),
+          ),
         ),
         FFRoute(
-          name: 'PaymentHome',
-          path: '/paymentHome',
+          name: PaymentHomeWidget.routeName,
+          path: PaymentHomeWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'PaymentHome')
               : PaymentHomeWidget(),
         ),
         FFRoute(
-          name: 'home',
-          path: '/home',
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
           builder: (context, params) =>
               params.isEmpty ? NavBarPage(initialPage: 'home') : HomeWidget(),
         ),
         FFRoute(
-          name: 'AuthHome',
-          path: '/authHome',
+          name: AuthHomeWidget.routeName,
+          path: AuthHomeWidget.routePath,
           builder: (context, params) => AuthHomeWidget(),
         ),
         FFRoute(
-          name: 'ChoresHome',
-          path: '/choresHome',
+          name: ChoresHomeWidget.routeName,
+          path: ChoresHomeWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'ChoresHome')
               : ChoresHomeWidget(),
         ),
         FFRoute(
-          name: 'Profile',
-          path: '/profile',
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
           builder: (context, params) => NavBarPage(
             initialPage: '',
             page: ProfileWidget(),
           ),
+        ),
+        FFRoute(
+          name: ForgotpasswordWidget.routeName,
+          path: ForgotpasswordWidget.routePath,
+          builder: (context, params) => ForgotpasswordWidget(),
+        ),
+        FFRoute(
+          name: HomeNoHouseholdsWidget.routeName,
+          path: HomeNoHouseholdsWidget.routePath,
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: HomeNoHouseholdsWidget(),
+          ),
+        ),
+        FFRoute(
+          name: SendMoneyStripeWidget.routeName,
+          path: SendMoneyStripeWidget.routePath,
+          builder: (context, params) => SendMoneyStripeWidget(),
+        ),
+        FFRoute(
+          name: PaypayWidget.routeName,
+          path: PaypayWidget.routePath,
+          builder: (context, params) => PaypayWidget(),
+        ),
+        FFRoute(
+          name: PaymentWidget.routeName,
+          path: PaymentWidget.routePath,
+          builder: (context, params) => PaymentWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

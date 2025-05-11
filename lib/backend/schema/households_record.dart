@@ -36,11 +36,35 @@ class HouseholdsRecord extends FirestoreRecord {
   DateTime? get createdAt => _createdAt;
   bool hasCreatedAt() => _createdAt != null;
 
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
+
+  // "code_expiration" field.
+  DateTime? _codeExpiration;
+  DateTime? get codeExpiration => _codeExpiration;
+  bool hasCodeExpiration() => _codeExpiration != null;
+
+  // "join_code" field.
+  String? _joinCode;
+  String get joinCode => _joinCode ?? '';
+  bool hasJoinCode() => _joinCode != null;
+
+  // "owner" field.
+  String? _owner;
+  String get owner => _owner ?? '';
+  bool hasOwner() => _owner != null;
+
   void _initializeFields() {
     _hid = snapshotData['hid'] as String?;
     _name = snapshotData['name'] as String?;
     _members = getDataList(snapshotData['members']);
     _createdAt = snapshotData['createdAt'] as DateTime?;
+    _image = snapshotData['image'] as String?;
+    _codeExpiration = snapshotData['code_expiration'] as DateTime?;
+    _joinCode = snapshotData['join_code'] as String?;
+    _owner = snapshotData['owner'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -81,12 +105,20 @@ Map<String, dynamic> createHouseholdsRecordData({
   String? hid,
   String? name,
   DateTime? createdAt,
+  String? image,
+  DateTime? codeExpiration,
+  String? joinCode,
+  String? owner,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'hid': hid,
       'name': name,
       'createdAt': createdAt,
+      'image': image,
+      'code_expiration': codeExpiration,
+      'join_code': joinCode,
+      'owner': owner,
     }.withoutNulls,
   );
 
@@ -102,12 +134,24 @@ class HouseholdsRecordDocumentEquality implements Equality<HouseholdsRecord> {
     return e1?.hid == e2?.hid &&
         e1?.name == e2?.name &&
         listEquality.equals(e1?.members, e2?.members) &&
-        e1?.createdAt == e2?.createdAt;
+        e1?.createdAt == e2?.createdAt &&
+        e1?.image == e2?.image &&
+        e1?.codeExpiration == e2?.codeExpiration &&
+        e1?.joinCode == e2?.joinCode &&
+        e1?.owner == e2?.owner;
   }
 
   @override
-  int hash(HouseholdsRecord? e) =>
-      const ListEquality().hash([e?.hid, e?.name, e?.members, e?.createdAt]);
+  int hash(HouseholdsRecord? e) => const ListEquality().hash([
+        e?.hid,
+        e?.name,
+        e?.members,
+        e?.createdAt,
+        e?.image,
+        e?.codeExpiration,
+        e?.joinCode,
+        e?.owner
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is HouseholdsRecord;

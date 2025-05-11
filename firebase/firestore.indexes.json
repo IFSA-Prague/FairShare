@@ -1,3 +1,52 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "payments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "payer_uid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "hid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "paidStatus",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_at",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "households",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "join_code",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "code_expiration",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "user_chores",
+      "fieldPath": "household",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
 }
